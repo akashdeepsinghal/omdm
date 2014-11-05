@@ -33,7 +33,7 @@ if($count==1){
     	$_SESSION["phone"] = $row["phone"];
     	$_SESSION["manager"] = $row["role"];
     }
-	header("location:dashboard.php");
+	header("location:manager.php");
 }
 else {
 	echo "Wrong Username or Password";

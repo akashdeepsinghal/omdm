@@ -1,27 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title></title>
 </head>
 <body>
-<?php 
-	     echo "
-			<table>
-			  <tr>
-			  	<th>Sr. No.</th>
-			    <th>Title</th>
-			    <th>Year of Release</th>
-			    <th>Director</th>
-			    <th>Producer(s)</th>
-			    <th>Actor(s)</th>
-			    <th>Studio</th>
-			    <th>Rating</th>
-			    <th>Length</th>
-			    <th>Genre</th>
-			  </tr>
-			</table>
-	     "
-?>
+	<div class="wrapper-center">
+		<div class="title">The Judge</div>
+	</div>
 </body>
 </html>
-

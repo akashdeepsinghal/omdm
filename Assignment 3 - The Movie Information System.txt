@@ -1,0 +1,51 @@
+Assignment 3 - The Movie Information System
+317M Assignment Number 3
+------------------------
+
+Overview : In this assignment, you will start with a SRS (Software requirement specification) that is described here and build a real application out of it. You will have to analyze the requirements, construct a domain model (ER Diagram), convert it to a relational model and then to a DB schema install script.
+Further you need to write application code that will provide functionality as asked for in the SRS and access the DB in order to do so.
+
+Domain: Movie Information System
+---------------------------------
+Each movie has a title that is unique in a year. Movies have actors (any number of them) and one actor in a lead role. Every movie is directed by one director and is produced by possibly multiple producers. Movie studios present movies. Each movie is of one genre (humor, horror, action, adventure, romance, drama). Movies are shown in theaters and can be shown in multiple theaters simultaneously. A movie may never be shown in any theatre and may appear only on DVD. Each movie is shown at a theatre for a certain number of days (everyday in that period) and has show timings associated with it in each theatre. Movies are of finite length of time and a theatre can only show one movie at a given time. Every theatre has a certain number of seats available for purchase for each showing of a movie. Seats are either regular or premium and the cost of a seat for each movie is fixed by the owner of the theatre. Every theatre is owned by one owner. Every movie can be rated by audience on a scale of 1-5 (with 5 being the highest rating) for direction, cinematography and acting. Every movie also has a overall score which is the average review score across the categories described for that review. Multiple ratings can exist for a movie and the rating of a movie (for any category) is the average of the multiple ratings. All people can be uniquely identified by a unique ID which is permanent. Every person has a current address and phone number.
+Awards are given for best actor, best director and best movie every year (at most one award for each category per year - this implies no award may be given for a category in a particular year). A movie can be given a award ONLY in the year AFTER the year it was released. Hence awards in 2014 can only go to movies released in 2013. The year of release is tagged by the studio. DVD movies are NOT eligible for awards.
+
+
+
+
+
+
+
+
+There are two roles that can access the application.
+a. Manager role
+b. Guest role
+0) The System must provide a facility for a user to register and login to the application. Do not worry about things like forgotten password etc. One can register can either a manager or as a guest. User logins are unique.
+Manager Role functionality
+----------------------------
+M1) A manager can enter a new movie or delete a movie from the DB.
+M2) A manager can edit movie details but NOT its name or year or release. Actors can be added but not deleted. Award details can be added but not deleted.
+M3) A manager can add theaters that the movie is showing in currently. He can modify showtimes and seat pricing for the movie in that theatre Different theaters can charge different amounts for the same movie and kinds of seat (regular or premium). A manager can also change the period for which the movie is available at a theatre.
+M4) A manager can query for the collections of a movie across theaters, of a theatre across movies for a time period. He should be able to rank order the best selling movies, the worst selling movies and search for movies and collections by a wide set of parameters.
+M5) A manager can do all the functionality that a Guest role can.
+
+Guest Role Functionality
+-------------------------
+G1) A guest can search for movies by any attribute - director, actor, year of release, studio, title, whether it was released only on DVD, theatre where it is showing, prices of tickets, awards, ratings etc. Be creative in search capabilities you expose.
+G2) A guest can add a review for a movie. A review once added cannot be deleted or edited.
+G3) A guest can buy tickets for a movie at some theatre. Do not worry about payment models etc. Limit a guest to buying 4 tickets at a time.
+
+
+
+
+
+
+
+What to submit:
+---------------
+1. A report in PDF format that shows the ER Diagram, the relational model and a design diagram that shows all components of the system (web component and DB). Include any implementation notes you see fit.
+2. A DB schema install script that will set up the DB schema in Postgres. It is a shell script which contains all the queries to create the database, roles and tables along with their constraints. Running the script should set up the database which the application can access.
+3. A Data load script that will load some dummy data into the DB schema that you just installed. It will be a series of SQL insert statements
+4. A WAR file that has the necessary web components that we can load into Tomcat.
+5. A README that has CLEAR instructions on how to deploy the application and then access it using a web browser.
+Submit everything as a single TAR file.
