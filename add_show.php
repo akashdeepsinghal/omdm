@@ -1,13 +1,6 @@
 <?php
 include 'session.php';
 include 'connect.php';
-
-$sql="SELECT * FROM theatres";
-$result=mysql_query($sql);
-
-while($row = mysql_fetch_assoc($result)) {
-	$a[] = $row["tname"];
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,73 +23,57 @@ while($row = mysql_fetch_assoc($result)) {
 <body>
 	<div>
 		<form method="post" action="insertshow.php">
-			<input name="tname" placeholder="Name of Theatre" type="text" id="theatrelist" onkeyup="showHint(this.value, '#theatrelist')" required>
-			<input name="kk" placeholder="Name of movie" type="text" id="movielist" onkeyup="showHint(this.value, '#movielist')" required>
-			<input name="startname" placeholder="startdate" type="date" required>
-			<input name="endname" placeholder="enddate" type="date" required>
-			<input name="actors" placeholder="Actors" type="text" required>
-			<input name="premiumseatnumber" placeholder="Premium Seat Numbers" type="Number" required>
+			<label>Movie Title
+				<select name="tname">
+					<?php
+					// $id = $_GET["id"];
+					$sql="SELECT * FROM movies";
+					$result=mysql_query($sql);
+					while($row = mysql_fetch_assoc($result)) {
+						echo '<option value="'.$row["id"].'">'.$row["title"].'</option>';
+						// echo $row["title"];
+					}
+					?>
+				</select>
+			</label>
+			<label>Theatre
+				<select name="tname">
+					<?php
+					// $id = $_GET["id"];
+					$sql="SELECT * FROM theatres";
+					$result=mysql_query($sql);
+					while($row = mysql_fetch_assoc($result)) {
+						echo '<option value="'.$row["id"].'">'.$row["tname"].'</option>';
+						// echo $row["title"];
+					}
+					?>
+				</select>
+			</label>
+			<a href="add_theatre.php" target="_blank">Add a theatre</a><br>
+			<label>Start Date
+				<input name="startdate" id="startdate" placeholder="startdate" type="date" required>
+			</label>
+			<label>End Date
+				<input name="enddate" id="enddate" placeholder="enddate" type="date" required>
+			</label>
+			<label>
+				<input name="premiumseatnumber" placeholder="Premium Seat Numbers" type="Number" required>
+			</label>
 			<input name="premiumseatprice" placeholder="Premium Seat Price" type="Number" required>
 			<input name="regularseatnumber" placeholder="Premium Seat Numbers" type="Number" required>
 			<input name="regularseatprice" placeholder="Premium Seat Price" type="Number" required>
 			<input name="rating" placeholder="Rating" type="Number" step="0.1" min="0.0" max="5.0" required>
 			<input name="length" placeholder="Length in minutes" type="Number" required>
-			<input name="showtime" placeholder="Show Time" type="time" required>
+			<label>Showtime
+				<input name="showtime" placeholder="Show Time" type="time" required>
+			</label>
 			<input type="submit">
 		</form>
 	</div>
 </div>
+
 <script>
-
-
-function showHint(str,list) {
-	// console.log('here');
-	var url;
-	if (list == '#movielist') {
-		url = 'getmovies.php?q=';
-	} else{
-		url = 'gettheatres.php?q=';
-	}
-  if (str.length==0) { 
-    document.getElementById("txtHint").innerHTML="";
-    return;
-  }
-  var xmlhttp=new XMLHttpRequest();
-  xmlhttp.onreadystatechange=function() {
-    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-    	var fields = xmlhttp.responseText.split(", ");
-		var availableTags = [
-		  "ActionScript",
-		  "AppleScript",
-		  "Asp",
-		  "BASIC",
-		  "C",
-		  "C++",
-		  "Clojure",
-		  "COBOL",
-		  "ColdFusion",
-		  "Erlang",
-		  "Fortran",
-		  "Groovy",
-		  "Haskell",
-		  "Java",
-		  "JavaScript",
-		  "Lisp",
-		  "Perl",
-		  "PHP",
-		  "Python",
-		  "Ruby",
-		  "Scala",
-		  "Scheme"
-		];
-		$( list ).autocomplete({
-			source: fields
-		});
-    }
-  }
-  xmlhttp.open("GET",url+str,true);
-  xmlhttp.send();
-}
+document.getElementById('datePicker').value = new Date().toDateInputValue();
 </script>
 </body>
 </html>
