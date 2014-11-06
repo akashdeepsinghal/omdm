@@ -1,6 +1,12 @@
 <?php
 include 'session.php';
 include 'connect.php';
+$showsql="SELECT * FROM shows";
+$showresult=mysql_query($showsql);
+$moviesql="SELECT * FROM movies WHERE theatres<>''";
+$movieresult=mysql_query($moviesql);
+$theatresql="SELECT * FROM theatres";
+$theatreresult=mysql_query($theatresql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,12 +29,12 @@ include 'connect.php';
 			<label>Movie Title
 				<select name="mid">
 					<?php
-					// $id = $_GET["id"];
-					$sql="SELECT * FROM movies";
-					$result=mysql_query($sql);
-					while($row = mysql_fetch_assoc($result)) {
+					// // $id = $_GET["id"];
+					// $sql="SELECT * FROM movies WHERE theatres<>''";
+					// $result=mysql_query($sql);
+					while($row = mysql_fetch_assoc($movieresult)) {
 						echo '<option value="'.$row["id"].'">'.$row["title"].'</option>';
-						// echo $row["title"];
+						echo $row["theatres"];
 					}
 					?>
 				</select>
@@ -47,21 +53,26 @@ include 'connect.php';
 				</select>
 			</label>
 			<!-- <a href="add_theatre.php" target="_blank">Add a theatre</a><br> -->
-			<label>Start Date
-				<input name="startdate" id="startdate" placeholder="startdate" type="date" required>
+			<label>Showtime
+				<select name="showtime">
+					<?php
+					while($row = mysql_fetch_assoc($showresult)) {
+						echo '<option value="'.$row["showtime"].'">'.$row["showtime"].'</option>';
+					}
+					?>
+				</select>
 			</label>
-			<label>End Date
-				<input name="enddate" id="enddate" placeholder="enddate" type="date" required>
+			<label>Showtime
+				<select name="showtime">
+					<?php
+					while($row = mysql_fetch_assoc($showresult)) {
+						echo '<option value="'.$row["showtime"].'">'.$row["showtime"].'</option>';
+					}
+					?>
+				</select>
 			</label>
 			<label>
-				<input name="premiumseatnumber" placeholder="Premium Seat Numbers" type="Number" required>
-			</label>
-			<input name="premiumseatprice" placeholder="Premium Seat Price" type="Number" required>
-			<input name="regularseatnumber" placeholder="Premium Seat Numbers" type="Number" required>
-			<input name="regularseatprice" placeholder="Premium Seat Price" type="Number" required>
-			<input name="length" placeholder="Length in minutes" type="Number" required>
-			<label>Showtime
-				<input name="showtime" placeholder="Show Time" type="time" required>
+				<input name="premiumseatnumber" placeholder="Premium Seat Numbers" type="text" required>
 			</label>
 			<input type="submit">
 		</form>
