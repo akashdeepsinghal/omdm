@@ -47,10 +47,14 @@ include 'connect.php';
 			<td>" . $row["studio"]. "</td>
 			<td>" . $row["rating"]. "</td>
 			<td>" . $row["length"]. "</td>
-			<td>" . $row["genre"]. "</td>
-			<td>" . '<a href="editmovie.php?id='.$row["id"].'">Edit</a>'. "</td>
-			<td>" . '<a href="deletemovie.php?id='.$row["id"].'">Delete</a>'. "</td>
-			</tr>";
+			<td>" . $row["genre"]. "</td>";
+			if ($manager) {
+				echo "
+				<td>" . '<a href="edit_movie.php?id='.$row["id"].'">Edit</a>'. "</td>
+				<td>" . '<a href="deletemovie.php?id='.$row["id"].'">Delete</a>'. "</td>";
+			}
+
+			echo "</tr>";
 	    }
 	    echo "</table>";
 	} else {

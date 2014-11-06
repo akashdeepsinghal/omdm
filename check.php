@@ -1,12 +1,29 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<title></title>
+<script>
+function showHint(str) {
+  if (str.length==0) { 
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  }
+  var xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function() {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    }
+  }
+  xmlhttp.open("GET","gethint.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
 </head>
 <body>
-	<div class="wrapper-center">
-		<div class="title">The Judge</div>
-	</div>
+
+<p><b>Start typing a name in the input field below:</b></p>
+<form> 
+First name: <input type="text" onkeyup="showHint(this.value)">
+</form>
+<p>Suggestions: <span id="txtHint"></span></p>
+
 </body>
 </html>

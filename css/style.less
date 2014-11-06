@@ -5,6 +5,7 @@ body,html{
 
 body{
 	top: 0;
+	font-family: 'open sans';
 }
 
 a{
@@ -12,15 +13,34 @@ a{
 	color: #fff;
 }
 
+.inlineblock{
+	display: inline-block;
+}
+
 #header-wrapper{
 	height: 10%;
-	background-color: #000;
+	background-color: #00bcd4;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
 	.header{
 		height: 100%;
 		color: #fff;
+		vertical-align: middle;
 		.logo{
-			padding: 1% 3%;
+			padding: 0% 3%;
 			font-size: 2em;
+			color: #fff;
+			.inlineblock;
+			line-height: 2em;
+		}
+		.nav-wrapper{
+			padding: 0% 3%;
+			font-size: 1.2em;
+			.inlineblock;
+			line-height: 2em;
+			.nav-element{
+				/*padding: 1%;*/
+				text-align: center;
+			}
 
 		}
 	}

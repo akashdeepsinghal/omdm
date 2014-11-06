@@ -5,20 +5,39 @@ html {
 }
 body {
   top: 0;
+  font-family: 'open sans';
 }
 a {
   text-decoration: none;
   color: #fff;
 }
+.inlineblock {
+  display: inline-block;
+}
 #header-wrapper {
   height: 10%;
-  background-color: #000;
+  background-color: #00bcd4;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 }
 #header-wrapper .header {
   height: 100%;
   color: #fff;
+  vertical-align: middle;
 }
 #header-wrapper .header .logo {
-  padding: 1% 3%;
+  padding: 0% 3%;
   font-size: 2em;
+  color: #fff;
+  display: inline-block;
+  line-height: 2em;
+}
+#header-wrapper .header .nav-wrapper {
+  padding: 0% 3%;
+  font-size: 1.2em;
+  display: inline-block;
+  line-height: 2em;
+}
+#header-wrapper .header .nav-wrapper .nav-element {
+  /*padding: 1%;*/
+  text-align: center;
 }
