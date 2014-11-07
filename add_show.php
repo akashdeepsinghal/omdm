@@ -55,18 +55,16 @@ include 'ifmanager.php';
 				</select>
 			</label>
 			<label>Start Date
-				<input name="startdate" id="startdate" placeholder="startdate" type="date" required>
+				<input name="startdate" id="startdate" min="<?php echo date("Y-m-d");?>" placeholder="startdate" type="date" required>
 			</label>
 			<label>End Date
-				<input name="enddate" id="enddate" placeholder="enddate" type="date" required>
+				<input name="enddate" id="enddate" min="<?php echo date("Y-m-d");?>" placeholder="enddate" type="date" required>
 			</label>
-			<label>
-				<input name="premiumseatnumber" placeholder="Premium Seat Numbers" type="Number" required>
-			</label>
-			<input name="premiumseatprice" placeholder="Premium Seat Price" type="Number" required>
-			<input name="regularseatnumber" placeholder="Premium Seat Numbers" type="Number" required>
-			<input name="regularseatprice" placeholder="Premium Seat Price" type="Number" required>
-			<input name="length" placeholder="Length in minutes" type="Number" required>
+			<input name="premiumseatnumber" min="0" placeholder="Premium Seat Numbers" type="Number" required>
+			<input name="premiumseatprice" min="0" placeholder="Premium Seat Price" type="Number" required>
+			<input name="regularseatnumber" min="0" placeholder="Regular Seat Numbers" type="Number" required>
+			<input name="regularseatprice" min="0" placeholder="Regular Seat Price" type="Number" required>
+			<input name="length" min="0" placeholder="Length in minutes" type="Number" required>
 			<label>Showtime
 				<input name="showtime" placeholder="Show Time" type="time" required>
 			</label>

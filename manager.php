@@ -1,5 +1,5 @@
 <?php
-include 'session.php'
+include 'session.php';
 include 'ifmanager.php';
 ?>
 <html>
@@ -9,7 +9,8 @@ include 'ifmanager.php';
 	echo $fullname;
 	if ($manager) {
 		echo '<br>'.'<a href="manage_movies.php">Manage movies!</a>'.'<br>'
-		.'<a href="manage_theatres.php">Manage theatres!</a>';
+		.'<a href="add_shows.php">Add Shows!</a>'.'<br>'
+		.'<a href="add_theatres.php">Add Theatres!</a>';
 	}
 	?>
 	<br>

@@ -11,6 +11,7 @@ $theatreresult=mysql_query($theatresql);
 <!DOCTYPE html>
 <html>
 <head>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<title><?php echo $title?> | Add Movie</title>
 	<style type="text/css">
 		input, select{
@@ -22,45 +23,46 @@ $theatreresult=mysql_query($theatresql);
 			text-transform: capitalize;
 		}
 	</style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#mid").change(function(){
+                 var mid = $("#mid").val();
+                 $.ajax({
+                    type:"get",
+                    url:"gettheatres.php",
+                    data:"mid="+mid,
+                    success: function(data) {
+                    	$("#tid").html(data);
+                    	console.log(data);
+                    }
+                 });
+            });
+       });
+    </script>
 </head>
 <body>
 	<div>
 		<form method="post" action="insertshow.php">
 			<label>Movie Title
-				<select name="mid">
+				<select name="mid" id="mid">
+					<option value="null">Select a movie</option>
 					<?php
-					// // $id = $_GET["id"];
-					// $sql="SELECT * FROM movies WHERE theatres<>''";
-					// $result=mysql_query($sql);
-					while($row = mysql_fetch_assoc($movieresult)) {
+					$sql="SELECT * FROM movies";
+					$result=mysql_query($sql);
+					while($row = mysql_fetch_assoc($result)) {
 						echo '<option value="'.$row["id"].'">'.$row["title"].'</option>';
-						echo $row["theatres"];
 					}
 					?>
 				</select>
 			</label>
 			<label>Theatre
-				<select name="tid">
-					<?php
-					// $id = $_GET["id"];
-					$sql="SELECT * FROM theatres";
-					$result=mysql_query($sql);
-					while($row = mysql_fetch_assoc($result)) {
-						echo '<option value="'.$row["id"].'">'.$row["tname"].'</option>';
-						// echo $row["title"];
-					}
-					?>
+				<select name="tid" id="tid">
+					<option value="null">Select a movie first</option>
 				</select>
 			</label>
 			<!-- <a href="add_theatre.php" target="_blank">Add a theatre</a><br> -->
 			<label>Date
-				<select name="date">
-					<?php
-					while($row = mysql_fetch_assoc($showresult)) {
-						echo '<option value="'.$row["showtime"].'">'.$row["showtime"].'</option>';
-					}
-					?>
-				</select>
+				<input name="date" type="date" />
 			</label>
 			<label>Showtime
 				<select name="showtime">
