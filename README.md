@@ -36,4 +36,3 @@ updatemovie.php : Takes the entires from the edit_movie.php page and updates in 
 add_movie.php : This page allows the user to add a new movie in the database and fill in the movie's attribute information.
 deletemovie.php : This page deletes the movie entry from the database, corresponding to the Movie selected.
 register.php : This page allows the user to register in the database as a 'Manager' or 'Guest'. The details of the person are inputted along with his selected username and password.
-

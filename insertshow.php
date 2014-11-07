@@ -18,23 +18,29 @@ $checkresult=mysql_query($checksql);
 $checkcount=mysql_num_rows($checkresult);
 if ($checkcount == 0) {
 
-	$begin = new DateTime( '2010-05-01' );
-	$end = new DateTime( '2010-05-10' );
+$begin = new DateTime( $startdate );
+$end = new DateTime( $enddate );
 
-	$interval = DateInterval::createFromDateString('1 day');
-	$period = new DatePeriod($begin, $interval, $end);
+$interval = DateInterval::createFromDateString('1 day');
+$period = new DatePeriod($begin, $interval, $end);
+
+// foreach ( $period as $dt ){
+// 	$r = $dt->format( "Y-m-d" );
+// 	echo $r;
+// }
 	$ok = true;
 	foreach ( $period as $dt ){
 		$date = $dt->format( "Y-m-d" );
+		// echo($date);
 		$showsql = "INSERT INTO shows (date, tid, mid, showtime, startdate, enddate, premiumseatnumber, premiumseatprice, regularseatnumber, regularseatprice) VALUES ('$date', '$tid', '$mid', '$showtime', '$startdate', '$enddate', '$premiumseatnumber', '$premiumseatprice', '$regularseatnumber', '$regularseatprice')";
 		if (mysql_query($showsql)) {
-			echo "ok";
+			// echo "ok";
 		} else {
 			echo "Error: " . mysql_error($conn);
 			$ok = false;
 		}
 	}
-	echo $ok;
+
 	if ($ok) {
 	    echo "New record for shows created successfully";
 	    $moviesql = "SELECT theatres FROM movies WHERE id=$mid";
@@ -68,7 +74,7 @@ if ($checkcount == 0) {
 		}
 	} else {
 	    // echo "Error: " . mysql_error($conn);
-	    echo("arg1");
+	    echo("Error!");
 	}
 } else{
 	echo "Show already exists!";

@@ -51,7 +51,14 @@ include 'ifmanager.php';
 			</label>
 			<label>Theatre
 				<select name="tid" id="tid">
-					<option value="null">Select a movie first</option>
+					<option value="null">Select a theatre</option>
+					<?php
+					$tsql="SELECT * FROM theatres";
+					$tresult=mysql_query($tsql);
+					while($trow = mysql_fetch_assoc($tresult)) {
+						echo '<option value="'.$trow["id"].'">'.$trow["tname"].'</option>';
+					}
+					?>
 				</select>
 			</label>
 			<label>Start Date
