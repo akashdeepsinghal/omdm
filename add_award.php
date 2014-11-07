@@ -6,7 +6,6 @@ include 'ifmanager.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<title><?php echo $title?> | Add Movie</title>
 	<style type="text/css">
 		input, select{
@@ -18,42 +17,40 @@ include 'ifmanager.php';
 			text-transform: capitalize;
 		}
 	</style>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#mid").change(function(){
-                 var mid = $("#mid").val();
-                 $.ajax({
-                    type:"get",
-                    url:"gettheatres.php",
-                    data:"mid="+mid,
-                    success: function(data) {
-                    	$("#tid").html(data);
-                    }
-                 });
-            });
-       });
-    </script>
 </head>
 <body>
 	<div>
-		<form method="post" action="insertshow.php">
+		<form method="post" action="insertaward.php">
+			<label>Year
+				<input name="awardyear" placeholder="startdate" type="Number" min="1930" max="2014" required>
+			</label>
 			<label>Movie Title
-				<select name="mid" id="mid">
-					<option value="null">Select a movie</option>
+				<select name="mid">
 					<?php
+					// $id = $_GET["id"];
 					$sql="SELECT * FROM movies";
 					$result=mysql_query($sql);
 					while($row = mysql_fetch_assoc($result)) {
 						echo '<option value="'.$row["id"].'">'.$row["title"].'</option>';
+						// echo $row["title"];
 					}
 					?>
 				</select>
 			</label>
 			<label>Theatre
-				<select name="tid" id="tid">
-					<option value="null">Select a movie first</option>
+				<select name="tid">
+					<?php
+					// $id = $_GET["id"];
+					$sql="SELECT * FROM theatres";
+					$result=mysql_query($sql);
+					while($row = mysql_fetch_assoc($result)) {
+						echo '<option value="'.$row["id"].'">'.$row["tname"].'</option>';
+						// echo $row["title"];
+					}
+					?>
 				</select>
 			</label>
+			<!-- <a href="add_theatre.php" target="_blank">Add a theatre</a><br> -->
 			<label>Start Date
 				<input name="startdate" id="startdate" placeholder="startdate" type="date" required>
 			</label>

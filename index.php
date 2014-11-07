@@ -4,11 +4,13 @@ session_start();
 if(!session_is_registered(myusername)){
 	// header("location:login.php");
 } else{
-	 $fullname = $_SESSION["fullname"];
-	 $address = $_SESSION["address"];
-	 $phone = $_SESSION["phone"];
-	 $manager = $_SESSION["manager"];
-	 $title = "Online Movie Database Management System";
+	$fullname = $_SESSION["fullname"];
+	$address = $_SESSION["address"];
+	$phone = $_SESSION["phone"];
+	$manager = $_SESSION["manager"];
+	$title = "Online Movie Database Management System";
+	$name_array = explode(" ", $fullname);
+	$firstname = $name_array[0];
 }
 include 'connect.php';
 ?>
@@ -33,19 +35,17 @@ include 'connect.php';
 			</a>
 			<a href="login.php">
 				<div class="logo">
-					Login
+					<?php
+					if ($firstname) {
+						echo($firstname);
+					} else {
+						echo('Login');
+					}
+					?>
 				</div>
 			</a>
-<!-- 			<div class="nav-wrapper">
-				<div class="nav-element">
-					Login
-				</div>
-			</div> -->
 		</div>
 	</div>
-
-
-
 	<?php 
 	if($manager){
 		echo("<a href='add_movie.php'>Add a movie</a>");
