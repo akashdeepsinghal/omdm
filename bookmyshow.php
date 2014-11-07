@@ -1,12 +1,6 @@
 <?php
 include 'session.php';
 include 'connect.php';
-$showsql="SELECT * FROM shows";
-$showresult=mysql_query($showsql);
-$moviesql="SELECT * FROM movies WHERE theatres<>''";
-$movieresult=mysql_query($moviesql);
-$theatresql="SELECT * FROM theatres";
-$theatreresult=mysql_query($theatresql);
 ?>
 <!DOCTYPE html>
 <html>

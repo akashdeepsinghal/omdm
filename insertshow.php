@@ -24,10 +24,6 @@ $end = new DateTime( $enddate );
 $interval = DateInterval::createFromDateString('1 day');
 $period = new DatePeriod($begin, $interval, $end);
 
-// foreach ( $period as $dt ){
-// 	$r = $dt->format( "Y-m-d" );
-// 	echo $r;
-// }
 	$ok = true;
 	foreach ( $period as $dt ){
 		$date = $dt->format( "Y-m-d" );
@@ -42,7 +38,7 @@ $period = new DatePeriod($begin, $interval, $end);
 	}
 
 	if ($ok) {
-	    echo "New record for shows created successfully";
+	    
 	    $moviesql = "SELECT theatres FROM movies WHERE id=$mid";
 	    $movieresult = mysql_query($moviesql);
 		while($row = mysql_fetch_assoc($movieresult)) {
@@ -62,11 +58,10 @@ $period = new DatePeriod($begin, $interval, $end);
 				$tids = $tid;
 			}
 			if (!$found) {
-				echo "Theatres :- ".$tids;
 				$updatesql = "UPDATE `movies` SET `theatres`='$tids' WHERE id=$mid";
 				// mysql_query($updatesql);
 				if (mysql_query($updatesql)) {
-					echo "Done!";
+					echo "New record for shows created successfully";
 				} else{
 					echo "Error: " . mysql_error($conn);
 				}
