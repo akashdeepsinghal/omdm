@@ -10,14 +10,13 @@
 
 
 
-$startdate = '2010-05-01';
-$begin = new DateTime( $startdate );
+
+$begin = new DateTime( '2010-05-01' );
 $end = new DateTime( '2010-05-10' );
 
 $interval = DateInterval::createFromDateString('1 day');
 $period = new DatePeriod($begin, $interval, $end);
-// echo($period);
-// echo($interval);
+
 foreach ( $period as $dt ){
 	$r = $dt->format( "Y-m-d" );
 	echo $r;
