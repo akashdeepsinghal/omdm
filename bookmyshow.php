@@ -53,8 +53,8 @@ $theatreresult=mysql_query($theatresql);
 				</select>
 			</label>
 			<!-- <a href="add_theatre.php" target="_blank">Add a theatre</a><br> -->
-			<label>Showtime
-				<select name="showtime">
+			<label>Date
+				<select name="date">
 					<?php
 					while($row = mysql_fetch_assoc($showresult)) {
 						echo '<option value="'.$row["showtime"].'">'.$row["showtime"].'</option>';

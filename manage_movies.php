@@ -1,6 +1,7 @@
 <?php
 include 'session.php';
 include 'connect.php';
+include 'ifmanager.php';
 ?>
 <!DOCTYPE html>
 <html>

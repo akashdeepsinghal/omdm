@@ -1,5 +1,6 @@
 <?php
 include 'session.php'
+include 'ifmanager.php';
 ?>
 <html>
 <body>
