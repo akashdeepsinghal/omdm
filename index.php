@@ -91,7 +91,7 @@ include 'connect.php';
 
 			if($manager){
 				echo "
-				<td>" . '<a href="editmovie.php?id='.$row["id"].'">Edit</a>'. "</td>
+				<td>" . '<a href="edit_movie.php?id='.$row["id"].'">Edit</a>'. "</td>
 				<td>" . '<a href="deletemovie.php?id='.$row["id"].'">Delete</a>'. "</td>";
 			}
 			echo "</tr>";

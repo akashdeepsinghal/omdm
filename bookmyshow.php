@@ -1,12 +1,6 @@
 <?php
 include 'session.php';
 include 'connect.php';
-$showsql="SELECT * FROM shows";
-$showresult=mysql_query($showsql);
-$moviesql="SELECT * FROM movies WHERE theatres<>''";
-$movieresult=mysql_query($moviesql);
-$theatresql="SELECT * FROM theatres";
-$theatreresult=mysql_query($theatresql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,12 +31,26 @@ $theatreresult=mysql_query($theatresql);
                     }
                  });
             });
+            $("#date").change(function(){
+                 var date = $("#date").val();
+                 var mid = $("#mid").val();
+                 var tid = $("#tid").val();
+                 $.ajax({
+                    type:"get",
+                    url:"getshowtimes.php",
+                    data:"date="+date+'&mid='+mid+'&tid='+tid,
+                    success: function(data) {
+                    	$("#showtime").html(data);
+                    	console.log(data);
+                    }
+                 });
+            });
        });
     </script>
 </head>
 <body>
 	<div>
-		<form method="post" action="insertshow.php">
+		<form method="post" action="confirmticket.php">
 			<label>Movie Title
 				<select name="mid" id="mid">
 					<option value="null">Select a movie</option>
@@ -62,20 +70,40 @@ $theatreresult=mysql_query($theatresql);
 			</label>
 			<!-- <a href="add_theatre.php" target="_blank">Add a theatre</a><br> -->
 			<label>Date
-				<input name="date" type="date" />
+				<select name="date" id="date">
+				<?php
+					for($i=0; $i<=6; $i++){
+						$display_date = strtoupper(date("Y-m-d", mktime(0, 0, 0, date("m"), date("d")+$i, date("Y"))));
+						echo '<option value="'.$display_date.'">'.$display_date.'</option>';
+					}
+				?>
+				</select>
 			</label>
 			<label>Showtime
-				<select name="showtime">
-					<?php
-					while($row = mysql_fetch_assoc($showresult)) {
-						echo '<option value="'.$row["showtime"].'">'.$row["showtime"].'</option>';
-					}
+				<select name="showtime" id="showtime" required>
+					<option>Select a name first</option>
 					?>
 				</select>
 			</label>
-			<label>
-				<input name="premiumseatnumber" placeholder="Premium Seat Numbers" type="text" required>
+			<label>Seat
+				<select name="seattype" required>
+					<option value="premium">Premium</option>
+					<option value="regular">Regular</option>
+				</select>
 			</label>
+			<label>Person 1
+				<input name="p1" placeholder="1st Person" type="text" required>
+			</label>
+			<label>Person 2
+				<input name="p2" placeholder="2nd Person" type="text">
+			</label>
+			<label>Person 3
+				<input name="p3" placeholder="3rd Person" type="text">
+			</label>
+			<label>Person 4
+				<input name="p4" placeholder="4th Person" type="text">
+			</label>
+
 			<input type="submit">
 		</form>
 	</div>

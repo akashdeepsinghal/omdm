@@ -1,17 +1,15 @@
 <?php
 include 'session.php';
 include 'connect.php';
+$date = $_GET["date"];
 $mid = $_GET["mid"];
 $tid = $_GET["tid"];
-$result = mysql_query("SELECT * FROM shows where mid='$mid' AND tid='$tid'");
+// echo($date.$mid.$tid);
+$result = mysql_query("SELECT * FROM shows where mid='$mid' AND tid='$tid' AND date='$date'");
+// $result = mysql_query("SELECT * FROM shows where date='$date'");
 while($rows = mysql_fetch_array($result)){
-  $theatres = $rows['theatres'];
-  $theatres_array = explode(", ", $theatres);
-  for ($i=0; $i <sizeof($theatres_array) ; $i++) {
-    $theatreresult = mysql_query("SELECT * FROM theatres where id='$theatres_array[$i]'");
-    while ($trows = mysql_fetch_array($theatreresult)) {
-      echo"<option value=".$theatres_array[$i].">".$trows['tname']."</option>";
-    }
-  }
+	// echo "YOOOO";
+	// echo($rows['showtime']);
+      echo"<option value=".$rows['showtime'].">".$rows['showtime']."</option>";
 }
 ?>

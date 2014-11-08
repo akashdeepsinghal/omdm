@@ -18,28 +18,12 @@ include 'ifmanager.php';
 			text-transform: capitalize;
 		}
 	</style>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#mid").change(function(){
-                 var mid = $("#mid").val();
-                 $.ajax({
-                    type:"get",
-                    url:"gettheatres.php",
-                    data:"mid="+mid,
-                    success: function(data) {
-                    	$("#tid").html(data);
-                    }
-                 });
-            });
-       });
-    </script>
 </head>
 <body>
 	<div>
 		<form method="post" action="insertshow.php">
 			<label>Movie Title
 				<select name="mid" id="mid">
-					<option value="null">Select a movie</option>
 					<?php
 					$sql="SELECT * FROM movies";
 					$result=mysql_query($sql);
@@ -51,7 +35,13 @@ include 'ifmanager.php';
 			</label>
 			<label>Theatre
 				<select name="tid" id="tid">
-					<option value="null">Select a movie first</option>
+					<?php
+					$tsql="SELECT * FROM theatres";
+					$tresult=mysql_query($tsql);
+					while($trow = mysql_fetch_assoc($tresult)) {
+						echo '<option value="'.$trow["id"].'">'.$trow["tname"].'</option>';
+					}
+					?>
 				</select>
 			</label>
 			<label>Start Date
