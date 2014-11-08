@@ -49,4 +49,15 @@ add_movie.php : This page allows the user to add a new movie in the database and
 deletemovie.php : This page deletes the movie entry from the database, corresponding to the Movie selected.
 register.php : This page allows the user to register in the database as a 'Manager' or 'Guest'. The details of the person are inputted along with his selected username and password.
 insertshow.php : This page let the manager to add a new show for a movie in the selected theatre.
-bookmyshow.php : This page allows the guest to book one to at max (4) to the tickets. This wil update the 
+bookmyshow.php : This page allows the guest to book one to at max (4) of the tickets for a perticular movie in a perticular theatre. This wil update the avialable seats in the theatre for that show and also add to the profit of the movie.
+insertaward.php : This page allows the manager to insert a new award of a given year.
+inserttheatre.php : Allows manager to add new theatre in the database.
+best_actor.php : This page adds the best actor in the awards database.
+best_director.php : This page adds the best director in the awards database.
+best_movie.php : This page adds the best movie's ID in the awards database.
+getdirector.php : Fetches the director for the given movie from the database.
+getlastyearmovies.php : Fetches all the movies from the year previous to the given year from the database.
+getmovies.php : Fetches the all the movie titles
+getshowdates.php : Fetches show date details for a given movie and theatre
+getshowtimes.php : Fetches the show time for a given movie and theatre
+gettheatres.php : For a given movie id it fetches the list of theatres, the movie is shown in.
