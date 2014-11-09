@@ -1,7 +1,12 @@
 omdm
-====
 
+====================================================================================================================================================================
 Online Movie Database Management System based on PHP
+====================================================================================================================================================================
+
+Created by:
+Akash Singhal (11D020024)
+Manmohan Mandhana (120070004)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Description
@@ -16,11 +21,15 @@ The user has to login to access the information on the webpage. The files 'login
 Manager Role
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------After login, the manager chooses to 'Manage Movies' or 'Manage Theatres'. If 'Manage Movie' is chosen, a list of all the movies in the database is shown along with two button, "Edit" for editing the movie details and "Delete" for deleting the movie from the database. The files edit_movie.php and deletemovie.php are used for the purpose respectively.
 If 'Manage Theatres' is chosen, the user can edit the details of the Theatre, Add or delete movies to a theatre and change the prices of movie tickets.
+For inserting a new show for a movie, the insertshow.php file inserts the threatre id in the movies table and adds an entry in the shows table for the given show time.
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Guest Role
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------After login, the list of all the movies in the Database will be shown. Along with two button, "Edit" for editing the movie details and "Delete" for deleting the movie from the database. The files edit_movie.php and deletemovie.php are used for the purpose respectively.
 The Guest can book a ticket of a movie by selecting a suitable theatre.
+When the guest books the ticket, the number is seats available is reduced by the number of tickets booked and the amount corresponding to these tickets is added to the net profit of the Movie.
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 File Description
@@ -36,3 +45,18 @@ updatemovie.php : Takes the entires from the edit_movie.php page and updates in 
 add_movie.php : This page allows the user to add a new movie in the database and fill in the movie's attribute information.
 deletemovie.php : This page deletes the movie entry from the database, corresponding to the Movie selected.
 register.php : This page allows the user to register in the database as a 'Manager' or 'Guest'. The details of the person are inputted along with his selected username and password.
+insertshow.php : This page let the manager to add a new show for a movie in the selected theatre.
+bookmyshow.php : This page allows the guest to book one to at max (4) of the tickets for a perticular movie in a perticular theatre. This wil update the avialable seats in the theatre for that show and also add to the profit of the movie.
+insertaward.php : This page allows the manager to insert a new award of a given year.
+inserttheatre.php : Allows manager to add new theatre in the database.
+best_actor.php : This page adds the best actor in the awards database.
+best_director.php : This page adds the best director in the awards database.
+best_movie.php : This page adds the best movie's ID in the awards database.
+getdirector.php : Fetches the director for the given movie from the database.
+getlastyearmovies.php : Fetches all the movies from the year previous to the given year from the database.
+getmovies.php : Fetches the all the movie titles
+getshowdates.php : Fetches show date details for a given movie and theatre
+getshowtimes.php : Fetches the show time for a given movie and theatre
+gettheatres.php : For a given movie id it fetches the list of theatres, the movie is shown in.
+
+====================================================================================================================================================================
