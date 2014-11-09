@@ -10,7 +10,7 @@ include 'ifmanager.php';
 	if ($manager) {
 		echo '<br>'.'<a href="manage_movies.php">Manage movies!</a>'.'<br>'
 		.'<a href="add_show.php">Add Shows!</a>'.'<br>'
-		.'<a href="add_theatres.php">Add Theatres!</a>';
+		.'<a href="add_theatre.php">Add Theatres!</a>';
 	}
 	?>
 	<br>

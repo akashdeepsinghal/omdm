@@ -1,5 +1,6 @@
 <?php
 session_start();
+$title = "Online Movie Database Management System";
 if(!session_is_registered(myusername)){
 	header("location:login.php");
 } else{
@@ -7,6 +8,5 @@ if(!session_is_registered(myusername)){
 	 $address = $_SESSION["address"];
 	 $phone = $_SESSION["phone"];
 	 $manager = $_SESSION["manager"];
-	 $title = "Online Movie Database Management System";
 }
 ?>

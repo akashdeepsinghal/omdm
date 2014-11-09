@@ -49,8 +49,8 @@ include 'connect.php';
                  });
             });
        });
-		function showHint(str, type) {
-			console.log(type);
+        // showHint
+		function showHint(str) {
 		  if (str.length==0) { 
 		    document.getElementById("txtHint").innerHTML="";
 		    return;
@@ -61,7 +61,7 @@ include 'connect.php';
 		      document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
 		    }
 		  }
-		  xmlhttp.open("GET","getmovies.php?type="+type+"&q="+str,true);
+		  xmlhttp.open("GET","getmovies.php?q="+str,true);
 		  xmlhttp.send();
 		}
     </script>
@@ -101,15 +101,13 @@ include 'connect.php';
 			</div> -->
 <p><b>Start typing a name in the input field below:</b></p>
 <form> 
-Movies: <input type="text" onkeyup="showHint(this.value, 'title')">
-Director: <input type="text" onkeyup="showHint(this.value, 'director')">
-Actor: <input type="text" onkeyup="showHint(this.value, 'actors')">
-Producers: <input type="text" onkeyup="showHint(this.value, 'producers')">
-Studio: <input type="text" onkeyup="showHint(this.value, 'studio')">
-Rating: <input type="Number" step="0.1" onkeyup="showHint(this.value, 'rating')">
-Year of Release: <input type="Number" step="0.1" onkeyup="showHint(this.value, 'year')">
+Movies: <input type="text" onkeyup="showHint(this.value)">
 </form>
 <p>Movies Suggestions: <span id="txtHint"></span></p>
+
+<!-- Movies: <input type="text" onkeyup="showHint(this.value)">
+</form>
+<p>Movies Suggestions: <span id="txtHint"></span></p> -->
 	
 <?php 
 	$sql="SELECT * FROM movies";
